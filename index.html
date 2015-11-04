@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+<script>
+document.addEventListener('deviceready', function () {
+    if (navigator.notification) { // Override default HTML alert with native dialog
+        window.alert = function (message) {
+            navigator.notification.alert(
+                message,    // message
+                null,       // callback
+                "Mobile Client", // title
+                'OK'        // buttonName
+            );
+        };
+    }
+}, false);
+</script>
+<p><button class="help-btn">Help</button></p>
+<div class='header'><h1>Directory</h1></div>
+<div class='search-view'>
+    <input class='search-key' type="search" placeholder="Enter name"/>
+    <ul class='list employee-list'></ul>
+</div>
+<script src="cordova.js"></script>
+<script src="lib/jquery.js"></script>
+<script src="js/services/json/EmployeeService.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
